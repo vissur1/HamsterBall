@@ -7,7 +7,9 @@ public class dropable : MonoBehaviour
 
     Rigidbody2D rb;
 
-    public Collider2D trigger;
+    //public Collider2D trigger;
+
+    public tag trigger;
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +20,17 @@ public class dropable : MonoBehaviour
         rb.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 
-    void OnCollisionStay2D(Collision2D collision) { 
+    void OnCollisionStay2D(Collision2D collision) {
 
-        if (collision.collider == trigger)
+        /*if (collision.collider == trigger)
         {
             rb.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        }*/
+
+        if (collision.gameObject.tag == trigger)
+        {
+            rb.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
         }
 
     }
