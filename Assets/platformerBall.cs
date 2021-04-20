@@ -7,7 +7,10 @@ public class platformerBall : MonoBehaviour
     Rigidbody2D rb;
     //Collider rb;
 
-    public float speed;
+    public bool isBouncing = false;
+
+    public float speed = 5f;
+    Vector2 movement;
     public float jumpSpeed;
 
     public float currentJumpSpeed;
@@ -24,12 +27,18 @@ public class platformerBall : MonoBehaviour
 
     public bool driven;
 
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
         currentJumpSpeed = jumpSpeed;
+
+
+
     }
 
     // Update is called once per frame
@@ -51,10 +60,18 @@ public class platformerBall : MonoBehaviour
 
         }
 
-        rb.velocity = new Vector2(moveX, moveY);
+        if (!isBouncing)
+        {
+            //movement = new Vector2(moveX, moveY);
 
+            //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
 
+           // print(rb.position);
 
+            rb.velocity = new Vector2(moveX, moveY);
+        }
+
+     
 
     }
 
@@ -102,7 +119,7 @@ public class platformerBall : MonoBehaviour
         }
         if (a < 0)
         {
-            moveBy = -jumpSpeed/2;
+            moveBy = -jumpSpeed / 2;
         }
 
         return moveBy;
@@ -116,10 +133,23 @@ public class platformerBall : MonoBehaviour
         //print(collision.gameObject.tag);
         currentJumpSpeed = jumpSpeed;
         accelerateSpeed = jumpSpeed;
+
+        /*if (rb != null)
+        {
+            float bounce = 6f; //amount of force to apply
+            rb.AddForce(collision.contacts[0].normal * bounce);
+            isBouncing = true;
+            Invoke("StopBounce", 0.3f);
+        }*/
     }
 
+    /*void StopBounce()
+    {
+        isBouncing = false;
+    }*/
+
     void OnCollisionStay2D(Collision2D collision)  //CHANGE THIS. At the moment, player can fly by spamming space while in the air due to how this only changes on impact registry
-    { 
+    {
         if (collision.gameObject.tag == "player")
         {
             playerTokensTouching = true;
