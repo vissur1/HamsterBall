@@ -10,6 +10,11 @@ public class switchToken : MonoBehaviour
 
     public Transform activeTokenFollow;
 
+
+    public Sprite empty;
+    public Sprite full;
+
+
     //public bool playerTokensTouching;
 
     // Start is called before the first frame update
@@ -30,6 +35,8 @@ public class switchToken : MonoBehaviour
             {
                 ball.GetComponent<platformerBall>().driven = true;
 
+                ball.GetComponent<SpriteRenderer>().sprite = full;
+
 
                 //ball.SetActive(true);
                 hamster.SetActive(false);
@@ -42,6 +49,9 @@ public class switchToken : MonoBehaviour
             {
                 //ball.SetActive(false);
                 hamster.SetActive(true);
+
+                ball.GetComponent<SpriteRenderer>().sprite = empty;
+
 
                 ball.GetComponent<platformerBall>().driven = false;
 
