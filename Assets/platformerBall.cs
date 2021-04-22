@@ -7,10 +7,13 @@ public class platformerBall : MonoBehaviour
     Rigidbody2D rb;
     //Collider rb;
 
-    public bool isBouncing = false;
+    float xBounce;
+    float yBounce;
 
-    public float speed = 5f;
+    public bool isBouncing = false;
     Vector2 movement;
+    public float speed = 5f;
+    
     public float jumpSpeed;
 
     public float currentJumpSpeed;
@@ -62,16 +65,18 @@ public class platformerBall : MonoBehaviour
 
         if (!isBouncing)
         {
-            //movement = new Vector2(moveX, moveY);
-
-            //rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
-
-           // print(rb.position);
-
-            rb.velocity = new Vector2(moveX, moveY);
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+            xBounce = 5;
+            yBounce = 5;
         }
 
-     
+        else
+        {
+            xBounce = 0;
+            yBounce = 0;
+        }
+
+        rb.velocity = new Vector2(moveX + xBounce, moveY + yBounce);
 
     }
 
@@ -134,19 +139,19 @@ public class platformerBall : MonoBehaviour
         currentJumpSpeed = jumpSpeed;
         accelerateSpeed = jumpSpeed;
 
-        /*if (rb != null)
+        if (rb != null) 
         {
             float bounce = 6f; //amount of force to apply
             rb.AddForce(collision.contacts[0].normal * bounce);
             isBouncing = true;
             Invoke("StopBounce", 0.3f);
-        }*/
+        }
     }
 
-    /*void StopBounce()
+    void StopBounce()
     {
         isBouncing = false;
-    }*/
+    }
 
     void OnCollisionStay2D(Collision2D collision)  //CHANGE THIS. At the moment, player can fly by spamming space while in the air due to how this only changes on impact registry
     {
