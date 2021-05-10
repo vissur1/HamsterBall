@@ -10,12 +10,11 @@ public class switchToken : MonoBehaviour
 
     public Transform activeTokenFollow;
 
-
     public Sprite empty;
     public Sprite full;
 
-
-    //public bool playerTokensTouching;
+    protected BallPhysics ballController;
+    protected SpriteRenderer ballRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -23,20 +22,20 @@ public class switchToken : MonoBehaviour
         hamster.SetActive(true);
         activeTokenFollow = hamster.transform;
 
+        ballController = ball.GetComponent<BallPhysics>();
+        ballRenderer = ball.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Space) == true)
+        if(Input.GetButtonDown("Switch") == true)
         {
-            if (hamster.activeSelf == true && ball.GetComponent<platformerBall>().playerTokensTouching == true)
+            if (hamster.activeSelf == true && ballController.playerTokensTouching == true)
             {
-                ball.GetComponent<platformerBall>().driven = true;
-
-                ball.GetComponent<SpriteRenderer>().sprite = full;
-
+                ballController.driven = true;
+                ballRenderer.sprite = full;
 
                 //ball.SetActive(true);
                 hamster.SetActive(false);
@@ -50,23 +49,15 @@ public class switchToken : MonoBehaviour
                 //ball.SetActive(false);
                 hamster.SetActive(true);
 
-                ball.GetComponent<SpriteRenderer>().sprite = empty;
-
-
-                ball.GetComponent<platformerBall>().driven = false;
+                ballRenderer.sprite = empty;
+                ballController.driven = false;
 
                 hamster.transform.position = this.transform.position;
 
                 activeTokenFollow = hamster.transform;
-
-                
             }
         }
 
         this.transform.position = new Vector3(activeTokenFollow.position.x, activeTokenFollow.position.y, this.transform.position.z);
-
-
-
-
     }
 }
