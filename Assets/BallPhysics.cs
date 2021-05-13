@@ -90,7 +90,7 @@ public class BallPhysics : MonoBehaviour
 
         }
 
-
+        //print(rb.velocity.x);
 
         DoMove(new Vector2(moveX, moveY));
     }
