@@ -154,7 +154,7 @@ public class platformerBall : MonoBehaviour
         isBouncing = false;
     }*/
 
-    void OnCollisionStay2D(Collision2D collision)  //CHANGE THIS. At the moment, player can fly by spamming space while in the air due to how this only changes on impact registry
+    /*void OnCollisionStay2D(Collision2D collision)  //CHANGE THIS. At the moment, player can fly by spamming space while in the air due to how this only changes on impact registry
     {
         if (collision.gameObject.tag == "player")
         {
@@ -165,6 +165,6 @@ public class platformerBall : MonoBehaviour
             playerTokensTouching = false;
         }
 
-    }
+    }*/
 
 }

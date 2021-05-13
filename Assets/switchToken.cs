@@ -32,8 +32,9 @@ public class switchToken : MonoBehaviour
 
         if(Input.GetButtonDown("Switch") == true)
         {
-            if (hamster.activeSelf == true && ballController.playerTokensTouching == true)
-            {
+
+
+            if (Vector3.Distance(ball.transform.position, hamster.transform.position) < 1.5 && hamster.activeSelf == true) {
                 ballController.driven = true;
                 ballRenderer.sprite = full;
 

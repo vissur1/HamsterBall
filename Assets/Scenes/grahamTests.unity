@@ -3996,5 +3996,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: playerAll
       objectReference: {fileID: 0}
+    - target: {fileID: 3327355053292976063, guid: 0a8f250fe5241b3458d970e5b75ba2ed,
+        type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327355053292976063, guid: 0a8f250fe5241b3458d970e5b75ba2ed,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327355053292976063, guid: 0a8f250fe5241b3458d970e5b75ba2ed,
+        type: 3}
+      propertyPath: ground.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8f250fe5241b3458d970e5b75ba2ed, type: 3}
