@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPhysics : MonoBehaviour
 {
+    [Serializable]
+    public enum State
+    {
+        Rising,
+        Falling,
+        Stopped
+    }
+
+    protected State state;
+    protected int jump = 0;
+
     protected Rigidbody2D rb;
     protected Collider2D col;
 
@@ -34,12 +46,22 @@ public class PlayerPhysics : MonoBehaviour
         float moveX = HorizontalMove();
 
         float moveY = rb.velocity.y;
-        if(Input.GetButtonDown("Jump") && col.IsTouchingLayers(ground))
+        if(Input.GetButtonDown("Jump") && state == State.Stopped && col.IsTouchingLayers(ground))
         {
+            jump = 45;
             moveY = jumpSpeed;
+        }
+        if(jump > 0)
+        {
+            jump--;
+        }
+        if(jump > 0 && Input.GetButtonUp("Jump"))
+        {
+            moveY *= 0.5f;
         }
 
         DoMove(new Vector2(moveX, moveY));
+        UpdateState();
     }
 
     protected virtual float HorizontalMove()
@@ -53,5 +75,19 @@ public class PlayerPhysics : MonoBehaviour
     protected virtual void DoMove(Vector2 movement)
     {
         rb.velocity = movement;
+    }
+
+    protected virtual void UpdateState()
+    {
+        if(rb.velocity.y > 0.001f)
+        {
+            state = State.Rising;
+        } else if(rb.velocity.y < -0.001f)
+        {
+            state = State.Falling;
+        } else
+        {
+            state = State.Stopped;
+        }
     }
 }

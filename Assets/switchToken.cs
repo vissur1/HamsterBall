@@ -8,6 +8,9 @@ public class switchToken : MonoBehaviour
     public GameObject ball;
     public GameObject hamster;
 
+    protected Collider2D ballCollider;
+    protected Collider2D hamsterCollider;
+
     public Transform activeTokenFollow;
 
     public Sprite empty;
@@ -19,6 +22,9 @@ public class switchToken : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hamsterCollider = hamster.GetComponent<Collider2D>();
+        ballCollider = ball.GetComponent<Collider2D>();
+
         hamster.SetActive(true);
         activeTokenFollow = hamster.transform;
 
@@ -32,8 +38,6 @@ public class switchToken : MonoBehaviour
 
         if(Input.GetButtonDown("Switch") == true)
         {
-
-
             if (Vector3.Distance(ball.transform.position, hamster.transform.position) < 1.5 && hamster.activeSelf == true) {
                 ballController.driven = true;
                 ballRenderer.sprite = full;
