@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-public class Spike : MonoBehaviour
+public class DieOnTouch : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collider)
     {
