@@ -28,7 +28,7 @@ public class BallPhysics : PlayerPhysics
             velocity.x = Math.Sign(velocity.x) * maxSpeed;
         }
         rb.velocity = velocity;
-    
+
         rb.AddForce(movement * Vector2.right);
     }
 }

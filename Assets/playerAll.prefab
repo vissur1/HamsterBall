@@ -281,8 +281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5015fe44e8f4a045b747f420fb1a950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
   jumpSpeed: 17
+  coyoteTime: 30
   ground:
     serializedVersion: 2
     m_Bits: 64
@@ -308,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2604285180647730976}
   m_Layer: 0
-  m_Name: playerAll 1
+  m_Name: playerAll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,14 +467,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf4282b9daa9db4a9406ac93aa8910c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 2
   jumpSpeed: 23
+  coyoteTime: 30
   ground:
     serializedVersion: 2
     m_Bits: 64
   driven: 0
-  friction: 0.98
-  maxSpeed: 7
+  friction: 0.9925
+  maxSpeed: 12
 --- !u!114 &3106802577908678463
 MonoBehaviour:
   m_ObjectHideFlags: 0
