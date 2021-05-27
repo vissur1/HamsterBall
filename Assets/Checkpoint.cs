@@ -28,4 +28,6 @@ public class CheckPoint : MonoBehaviour
             Debug.Log("Activated Checkpoint" + transform.position);
         }
     }
-}
+ }
+    
+

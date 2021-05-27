@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 
-
+    
 {
     public GameObject currentCheckpoint;
 
-
+   
     private PlayerPhysics player;
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void RespawnPlayer()
