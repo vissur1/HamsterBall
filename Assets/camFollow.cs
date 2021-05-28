@@ -13,7 +13,7 @@ public class camFollow : MonoBehaviour
     {
         
 
-        this.transform.position = new Vector3(followTransform.position.x, followTransform.position.y + 1.5f, this.transform.position.z);
+        this.transform.position = new Vector3(followTransform.position.x, followTransform.position.y, this.transform.position.z);
         
 
     }

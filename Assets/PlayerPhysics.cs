@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerPhysics : MonoBehaviour
+public class PlayerPhysics : MoveableObject
 {
     [Serializable]
     public enum State
@@ -23,16 +23,21 @@ public class PlayerPhysics : MonoBehaviour
     public float speed;
     public float jumpSpeed;
 
+    public int coyoteTime = 30;
+    protected int coyoteTimeLeft;
+
     public LayerMask ground;
 
     // Start is called before the first frame update
-    protected virtual void Start()
+    protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
 
         Killable killable = GetComponent<Killable>();
         killable.onDie += onDie;
+
+        base.Start();
     }
 
     protected virtual void onDie()
@@ -46,10 +51,20 @@ public class PlayerPhysics : MonoBehaviour
         float moveX = HorizontalMove();
 
         float moveY = rb.velocity.y;
-        if(Input.GetButtonDown("Jump") && state == State.Stopped && col.IsTouchingLayers(ground))
+        if(col.IsTouchingLayers(ground) && state == State.Stopped)
+        {
+            coyoteTimeLeft = coyoteTime;
+        } else if(coyoteTimeLeft > 0)
+        {
+            coyoteTimeLeft--;
+        }
+
+        // the player has a brief period of time where they can jump after walking off an edge
+        if(Input.GetButtonDown("Jump") && coyoteTimeLeft > 0)
         {
             jump = 45;
             moveY = jumpSpeed;
+            coyoteTimeLeft = 0;
         }
         if(jump > 0)
         {
