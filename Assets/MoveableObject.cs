@@ -11,4 +11,9 @@ public class MoveableObject : MonoBehaviour
     {
         MoveableObject.moveables.Add(this);
     }
+
+    protected virtual void OnDestroy()
+    {
+        MoveableObject.moveables.Remove(this);
+    }
 }

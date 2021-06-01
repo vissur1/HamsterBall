@@ -11,6 +11,9 @@ public class MovingPlatform : MonoBehaviour
     protected float progress;
     public float time;
 
+    public bool moveOnlyOnContact = false;
+    protected bool contactMade = false;
+
     protected float direction = 1f;
 
     protected Collider2D col;
@@ -38,7 +41,10 @@ public class MovingPlatform : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        progress += Time.deltaTime * direction;
+        if(contactMade || !moveOnlyOnContact)
+        {
+            progress += Time.deltaTime * direction;
+        }
         Vector3 target = Vector3.Lerp(source, destination.position, progress / time);
         Vector3 difference = target - transform.position;
         transform.position = target;
@@ -66,6 +72,7 @@ public class MovingPlatform : MonoBehaviour
                 // only move the object if the object is above the platform
                 if(collider.bounds.center.y > col.bounds.center.y)
                 {
+                    contactMade = true;
                     obj.transform.position += amount;
                 }
             }
