@@ -144,8 +144,8 @@ MonoBehaviour:
   ball: {fileID: 2604285181125699223}
   hamster: {fileID: 2604285179587715589}
   activeTokenFollow: {fileID: 0}
-  empty: {fileID: 21300000, guid: 2139f539af1fa66479fdcff319931307, type: 3}
-  full: {fileID: 21300000, guid: c6426a1470d200d49aa1f11086f7eddb, type: 3}
+  empty: {fileID: 21300000, guid: 449c8f246fa16f847b97f26bd0132c06, type: 3}
+  full: {fileID: 21300000, guid: a1898d8fa4483db46a98fbd16a50f4bc, type: 3}
 --- !u!1 &2604285179587715589
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2e8791bee13ea04e9fa4eafe3e12e24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3edbc33beb8d31a4ab465a22969ac81b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -407,7 +407,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2139f539af1fa66479fdcff319931307, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 449c8f246fa16f847b97f26bd0132c06, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
